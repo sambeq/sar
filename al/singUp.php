@@ -51,7 +51,7 @@
 							<fieldset>
 								
 								<!-- Form Name -->
-								<legend style="color:red">SIGN UP</legend>
+								<legend style="color:red">RREGJISTRIMI</legend>
 								
 								<!-- Text input-->
 								<div class="col-md-6 col-md-offset-2">
@@ -66,35 +66,35 @@
 											</div>
 											<!-- First Name-->
 											<div class="form-group">
-												<label for="firstName" class="col-sm-3 control-label">First Name</label>
+												<label for="firstName" class="col-sm-3 control-label">Emri</label>
 												<div class="col-sm-9">
 													<input name="firstname" type="text" id="firstName" placeholder="First Name" class="form-control" />
 												</div>
 											</div>
 											<!-- Last Name-->
 											<div class="form-group">
-												<label for="lastName" class="col-sm-3 control-label">Last Name</label>
+												<label for="lastName" class="col-sm-3 control-label">Mbiemri</label>
 												<div class="col-sm-9">
 													<input name="lastname" type="text" id="lastName" placeholder="Last Name" class="form-control" >
 												</div>
 											</div>
 											<!-- Email-->
 											<div class="form-group">
-												<label for="email" class="col-sm-3 control-label">Email</label>
+												<label for="email" class="col-sm-3 control-label">Emaili</label>
 												<div class="col-sm-9">
 													<input name="email" type="email" id="email" placeholder="Email" class="form-control" >
 												</div>
 											</div>
 											<!-- Password -->
 											<div class="form-group">
-												<label for="password" class="col-sm-3 control-label">Password</label>
+												<label for="password" class="col-sm-3 control-label">Fjalkalimi</label>
 												<div class="col-sm-9">
 													<input name="password" type="password" id="password" placeholder="Password" class="form-control" >
 												</div>
 											</div>
 											<!-- Confirm Password -->
 											<div class="form-group">
-												<label for="passwordConfirm" class="col-sm-3 control-label">Confirm Password</label>
+												<label for="passwordConfirm" class="col-sm-3 control-label">Konfirmimi i Fjalkalimit</label>
 												<div class="col-sm-9">
 													<input type="password" name="confirmpassword" id="passwordConfirm" class="form-control" placeholder="Confirm Password"  >
 													
@@ -111,28 +111,28 @@
 											</div>-->
 											<!-- Birthdate -->
 											<div class="form-group">
-												<label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+												<label for="birthDate" class="col-sm-3 control-label">Ditlindja</label>
 												<div class="col-sm-9">
 													<input name="birthdate" type="date" id="birthDate" class="form-control">
 												</div>
 											</div>
 											<!-- State -->
 											<div class="form-group">
-												<label for="state" class="col-sm-3 control-label">State</label>
+												<label for="state" class="col-sm-3 control-label">Shteti</label>
 												<div class="col-sm-9">
 													<select name="state"id="countries_states1" class="form-control bfh-countries" data-country="AL"></select>
 												</div>
 											</div> 
 											<!-- Country -->
 											<div class="form-group">
-												<label for="country" class="col-sm-3 control-label">Country</label>
+												<label for="country" class="col-sm-3 control-label">Qyteti</label>
 												<div class="col-sm-9">
 													<select name="country" class="form-control bfh-states" data-country="countries_states1"></select>
 												</div>
 											</div>
 											<!-- Phone -->
 											<div class="form-group">
-												<label for="phone" class="col-sm-3 control-label">Phone</label>
+												<label for="phone" class="col-sm-3 control-label">Telefoni</label>
 												<div class="col-sm-9">
 													
 													<input name="phone" type="text" class="form-control bfh-phone" data-country="countries_states1">
@@ -140,17 +140,17 @@
 											</div>
 											<!-- Gender -->
 											<div class="form-group">
-												<label class="control-label col-sm-3">Gender</label>
+												<label class="control-label col-sm-3">Gjinia</label>
 												<div class="col-sm-6">
 													<div class="row">
 														<div class="col-sm-4">
 															<label for="femaleRadio"class="radio-inline">
-																<input name="gender" type="radio" id="femaleRadio" value="Female">Female
+																<input name="gender" type="radio" id="femaleRadio" value="Female">Femer
 															</label>
 														</div>
 														<div class="col-sm-4">
 															<label for="maleRadio" class="radio-inline">
-																<input name="gender" type="radio" id="maleRadio" value="Male">Male
+																<input name="gender" type="radio" id="maleRadio" value="Male">Mashkull
 															</label>
 														</div>
 													</div>
@@ -158,12 +158,12 @@
 											</div> 
 											<div class="form-group last">
 												<div class="col-sm-offset-3 col-sm-9">
-													<button name="singup"type="submit" class="btn btn-success btn-md">SingUp</button>
+													<button name="singup"type="submit" class="btn btn-success btn-md">Rregjistrohu</button>
 													<button type="reset" class="btn btn-danger">Reset</button>
 												</div>
 											</div>
 											<div class="col-sm-offset-3 col-sm-9">
-												<div class="form-group last">Already registered? <a href="login.php">Login here</a>
+												<div class="form-group last">Keni nje llogari?  <a href="login.php">Hyr Ketu!</a>
 												</div>
 											</div>
 										</form> <!-- /form -->
