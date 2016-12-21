@@ -103,12 +103,6 @@
         placeholder="Enter a destination location">
 
     <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" >
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">Transit</label>
-
       <input type="radio" name="type" id="changemode-driving" checked="checked">
       <label for="changemode-driving">Driving</label>
     </div>
@@ -155,8 +149,7 @@
             travel_mode = mode;
           });
         }
-        setupClickListener('changemode-walking', 'WALKING');
-        setupClickListener('changemode-transit', 'TRANSIT');
+
         setupClickListener('changemode-driving', 'DRIVING');
 
         function expandViewportToFitPlace(map, place) {
