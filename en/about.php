@@ -4,18 +4,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>ABOUT</title>
-		<meta name="description" content="The first carpooling company in Albania." />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="generator" content="Codeply">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-		<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-		<link rel="stylesheet" href="css/styles.css" />
+
+        <?php include 'head.php'; ?>
+
 	</head>
 	<body>
-		<?php
-			include 'navbar.php';
-		?>
+
+    <?php include 'navbar.php'; ?>
 		
 		<section class="bg-primary" id="one">
 			<div class="container">
