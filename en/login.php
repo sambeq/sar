@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php
+
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -48,14 +50,13 @@
 								<!-- Form Name -->
 								<legend style= "color:red" >LOG IN</legend>
 								
-								
 								<div class="col-md-6 col-md-offset-2">
 									<div class="panel-body">
 										<form class="form-horizontal" role="form">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 												<div class="col-sm-9">
-													<input name="email"type="email" class="form-control" id="inputEmail3" placeholder="Email" value="<?php echo $submitted_email; ?>" required="">
+													<input name="email"type="email" class="form-control" id="inputEmail3" placeholder="Email" required="">
 												</div>
 											</div>
 											<div class="form-group">
@@ -87,72 +88,64 @@
 											
 										</form>
 										
-										<?php 
-											
-											require 'dbconnect.php'; 
-											$submitted_email = ''; 
+										<?php
+											require 'dbconnect.php';
+
 											if(!empty($_POST)){ 
-												$query = " 
-												SELECT 
-												User_ID, 
-												FirstName, 
-												Password, 
-												Salt, 
-												Email 
-												FROM Useri 
-												WHERE 
-												Email = ? 
-												"; 
+												$query = " SELECT Userid, Firstname, Password, Salt, Email 	FROM User WHERE Email = ? ";
 												$email=$_POST['email'];
-												
+
 												try{ 
-													$stmt = $dbh->prepare($query); 
+													$stmt = $conn->prepare($query);
 													$stmt->bindParam(1, $email);
 													$result = $stmt->execute(); 
-												} 
+												}
+
 												catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); } 
 												$login_ok = false; 
-												$row = $stmt->fetch(); 
+												$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 												if($row){ 
 													$check_password = hash('sha256', $_POST['password'] . $row['Salt']); 
 													for($round = 0; $round < 65536; $round++){
 														$check_password = hash('sha256', $check_password . $row['Salt']);
-													} 
+													}
 													if($check_password === $row['Password']){
+
+
 														$login_ok = true;
-														
-														
-													} 
+
+													}
 												} 
 												
 												if($login_ok){ 
 													
 													
-													unset($row['Salt']); 
-													unset($row['Password']); 
-													$_SESSION['Email'] = $row['Email']; 
-													$_SESSION['loggedin']=true;
+													unset($row['Salt']);
+													unset($row['Password']);
+                                                    $_SESSION['Email'] = $row['Email'];
+                                                    $_SESSION['loggedin']=true;
 													
-													$update = "UPDATE Useri SET lastLoginDate = getdate(), lastLoginIp= '" . $_SERVER['REMOTE_ADDR'] . "', ip= '" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "' WHERE Email = ? ";
-													$sth = $dbh->prepare($update);
+													/**  $update $update = "UPDATE User SET lastLoginDate = getdate(), lastLoginIp= '" . $_SERVER['REMOTE_ADDR'] . "', ip= '" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "' WHERE Email = ? ";
+													$sth = $conn->prepare($update);
 													
 													
 													$emaili=$_POST["email"];
 													
 													$sth->bindParam(1, $emaili);
 													
-													$result=$sth->execute();
-													
-													
-													
-													
-													header("Location: index.php "); 
+													$result=$sth->execute();*/
+
+
+
+
+                                                    echo'<script>window.location="index.phps";</script>';
 													die("Redirecting to:index.php"); 
 													
 												} 
 												else{ 
-													print("Login Failed."); 
-													$submitted_email = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8'); 
+													print("Login Failed.");
+
 												} 
 											} 
 										?> 

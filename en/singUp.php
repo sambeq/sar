@@ -1,5 +1,4 @@
 <?php session_start();?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -173,20 +172,10 @@
 						</form>
 					</div>
 				</div>
-				<?php 
-					require 'dbconnect.php';//verbindung zur DB 
+				<?php
+
 					
-					
-					$Pass=$_POST['password'];
-					$confirmpassword=$_POST['confirmpassword'];
-					if ($Pass != $confirmpassword) {
-						echo("Error... Passwords do not match");
-						exit;
-						
-					}
-					
-					
-					if(!empty($_POST)) 
+					if(!empty($_POST))
 					{ 
 						// Ensure that the user fills out fields 
 						if(empty($_POST['username'])) 
@@ -208,42 +197,34 @@
 						if(empty($_POST['password'])) 
 						{ die("Please enter a password."); } 
 						if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) 
-						{ die("Invalid E-Mail Address"); } 
-						
-						/** Check if the Username is already taken
-						$query = " SELECT * FROM Useri WHERE UserName = ?"; 
-												
-						$username=$_POST['username'];
-						try { 
-							$stmt = $dbh->prepare($query); 
-							$stmt->bindParam(1, $username);							
-							$result = $stmt->execute();							
-						} 
-						
-						
-						catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage());} 
-						$row = $stmt->fetch(); 
-						if($row){ die("This Username is already registered"); }
-						**/
-						
+						{ die("Invalid E-Mail Address"); }
+
+                        require 'dbconnect.php';//verbindung zur DB
+
+                        $Pass=$_POST['password'];
+                        $confirmpassword=$_POST['confirmpassword'];
+                        if ($Pass != $confirmpassword) {
+                            echo("Error... Passwords do not match");
+                            exit;
+                        }
+
 						// Check if the email is already taken
-						$query = " SELECT * FROM User WHERE Email = ?"; 
-						
+						$query = "SELECT * FROM User WHERE Email = ?";
 						
 						$email=$_POST['email'];
 						try { 
-							$stmt = $dbh->prepare($query); 
+							$stmt = $conn->prepare($query);
 							$stmt->bindParam(1, $email);
 							
 							$result = $stmt->execute();
-							//$result = $stmt->execute($query_params);
+
 						} 
 						catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage());} 
-						$row = $stmt->fetch(); 
+						$row = $stmt->fetch(PDO::FETCH_ASSOC);
 						if($row){ die("This email address is already registered"); } 
 						
 						// Add row to database 
-						$query = " INSERT INTO User (  FirstName, LastName, UserName, Birthdate, Password, Phone, Email, Gender, Salt, State, Country ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) "; 
+						$query = "INSERT INTO User (  Firstname, Lastname, Username, Birthdate, Password, Phone, Email, Gender, Salt, State, Country ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 						
 						// Security measures
 						$salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
@@ -264,7 +245,7 @@
 						$gender=$_POST['gender'];
 						
 						try {  
-							$stmt = $dbh->prepare($query); 
+							$stmt = $conn->prepare($query);
 							
 							$stmt->bindParam(1, $firstname);
 							$stmt->bindParam(2, $lastname);
@@ -277,23 +258,22 @@
 							$stmt->bindParam(9, $salt);
 							$stmt->bindParam(10, $state);
 							$stmt->bindParam(11, $country);
-							echo "ok";
-							
+
 							$result = $stmt->execute();
 							
 							//$result = $stmt->execute($query_params);
 						} 
-						catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); } 
+						catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); }
 						if($result==true ){
 							echo"<div class='panel panel-success'>";
 							echo"<div class='panel-heading'>Inserted</div>";
 							echo"</div>";
-							
+
 							}else{
 							echo"<div class='panel panel-warning'>";
 							echo"<div class='panel-heading'>User not inserted</div>";
 							echo"</div>";
-						} 
+						}
 					} 
 					
 					

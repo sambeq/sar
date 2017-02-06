@@ -1086,7 +1086,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: floralwhite;
 }
 input,
 button,
@@ -1373,7 +1373,7 @@ a.text-danger:focus {
   color: #843534;
 }
 .bg-primary {
-  color: #fff;
+  color: #080808;
   background-color: #337ab7;
 }
 a.bg-primary:hover,
