@@ -237,12 +237,12 @@
 						catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); }
 						if($result==true ){
 							echo"<div class='panel panel-success'>";
-							echo"<div class='panel-heading'>Inserted</div>";
+							echo"<div class='panel-heading'>Your Registration Succeed!</div>";
 							echo"</div>";
 
 							}else{
 							echo"<div class='panel panel-warning'>";
-							echo"<div class='panel-heading'>User not inserted</div>";
+							echo"<div class='panel-heading'>Your Registration Failed!</div>";
 							echo"</div>";
 						}
 					} 

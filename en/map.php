@@ -32,6 +32,8 @@
 
       #origin-input,
       #destination-input {
+
+        color: #282828;
         background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
@@ -65,7 +67,7 @@
 	</head>
 	<body>
 
-        <?php include 'navbar.php'; ?>
+        <?php include 'map-navbar.php'; ?>
 
 	<div>
 	</div>
