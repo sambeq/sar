@@ -13,7 +13,7 @@
 		
 		<section style= "color:black" class="bg-primary" id="one">
 			
-			<div class="container">    
+			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<form class="form-horizontal" action="singUp.php" method="post">
@@ -25,47 +25,47 @@
 								<!-- Text input-->
 								<div class="col-md-6 col-md-offset-2">
 									<div class="panel-body">
-										<form class="form-horizontal" role="form">
+										<form  class="form-horizontal" role="form">
 											<!-- User Name-->
 											<div class="form-group">
 												<label for="userName" class="col-sm-3 control-label">User Name</label>
-												<div class="col-sm-9">
-													<input name="username" type="text" id="userName" placeholder="User Name" class="form-control" />
+												<div  class="col-sm-9">
+													<input style="color:black" name="username" type="text" id="userName" placeholder="User Name" class="form-control" />
 												</div>
 											</div>
 											<!-- First Name-->
 											<div class="form-group">
 												<label for="firstName" class="col-sm-3 control-label">First Name</label>
 												<div class="col-sm-9">
-													<input name="firstname" type="text" id="firstName" placeholder="First Name" class="form-control" />
+													<input style="color:black" name="firstname" type="text" id="firstName" placeholder="First Name" class="form-control" />
 												</div>
 											</div>
 											<!-- Last Name-->
 											<div class="form-group">
 												<label for="lastName" class="col-sm-3 control-label">Last Name</label>
 												<div class="col-sm-9">
-													<input name="lastname" type="text" id="lastName" placeholder="Last Name" class="form-control" >
+													<input style="color:black" name="lastname" type="text" id="lastName" placeholder="Last Name" class="form-control" >
 												</div>
 											</div>
 											<!-- Email-->
 											<div class="form-group">
 												<label for="email" class="col-sm-3 control-label">Email</label>
 												<div class="col-sm-9">
-													<input name="email" type="email" id="email" placeholder="Email" class="form-control" >
+													<input style="color:black" name="email" type="email" id="email" placeholder="Email" class="form-control" >
 												</div>
 											</div>
 											<!-- Password -->
 											<div class="form-group">
 												<label for="password" class="col-sm-3 control-label">Password</label>
 												<div class="col-sm-9">
-													<input name="password" type="password" id="password" placeholder="Password" class="form-control" >
+													<input style="color:black" name="password" type="password" id="password" placeholder="Password" class="form-control" >
 												</div>
 											</div>
 											<!-- Confirm Password -->
 											<div class="form-group">
 												<label for="passwordConfirm" class="col-sm-3 control-label">Confirm Password</label>
 												<div class="col-sm-9">
-													<input type="password" name="confirmpassword" id="passwordConfirm" class="form-control" placeholder="Confirm Password"  >
+													<input style="color:black" type="password" name="confirmpassword" id="passwordConfirm" class="form-control" placeholder="Confirm Password"  >
 													
 												</div>
 											</div>
@@ -82,21 +82,21 @@
 											<div class="form-group">
 												<label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
 												<div class="col-sm-9">
-													<input name="birthdate" type="date" id="birthDate" class="form-control">
+													<input style="color:black" name="birthdate" type="date" id="birthDate" class="form-control">
 												</div>
 											</div>
 											<!-- State -->
 											<div class="form-group">
 												<label for="state" class="col-sm-3 control-label">State</label>
 												<div class="col-sm-9">
-													<select name="state"id="countries_states1" class="form-control bfh-countries" data-country="AL"></select>
+													<select style="color:black" name="state"id="countries_states1" class="form-control bfh-countries" data-country="AL"></select>
 												</div>
 											</div> 
 											<!-- Country -->
 											<div class="form-group">
 												<label for="country" class="col-sm-3 control-label">Country</label>
 												<div class="col-sm-9">
-													<select name="country" class="form-control bfh-states" data-country="countries_states1"></select>
+													<select  style="color:black" name="country" class="form-control bfh-states" data-country="countries_states1"></select>
 												</div>
 											</div>
 											<!-- Phone -->
@@ -104,7 +104,7 @@
 												<label for="phone" class="col-sm-3 control-label">Phone</label>
 												<div class="col-sm-9">
 													
-													<input name="phone" type="text" class="form-control bfh-phone" data-country="countries_states1">
+													<input style="color:black" name="phone" type="text" class="form-control bfh-phone" data-country="countries_states1">
 												</div>
 											</div>
 											<!-- Gender -->
