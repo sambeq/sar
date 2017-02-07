@@ -53,91 +53,76 @@
 												<div class="form-group last">Not Registered? <a href="singUp.php" class="">Register here</a>
 												</div>
 											</div>
-											
 										</form>
-										
-										<?php
-											require 'dbconnect.php';
-
-											if(!empty($_POST)){ 
-												$query = " SELECT Userid, Firstname, Password, Salt, Email 	FROM User WHERE Email = ? ";
-												$email=$_POST['email'];
-
-												try{ 
-													$stmt = $conn->prepare($query);
-													$stmt->bindParam(1, $email);
-													$result = $stmt->execute(); 
-												}
-
-												catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); } 
-												$login_ok = false; 
-												$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-												if($row){ 
-													$check_password = hash('sha256', $_POST['password'] . $row['Salt']); 
-													for($round = 0; $round < 65536; $round++){
-														$check_password = hash('sha256', $check_password . $row['Salt']);
-													}
-													if($check_password === $row['Password']){
-
-
-														$login_ok = true;
-
-													}
-												} 
-												
-												if($login_ok){ 
-													
-													
-													unset($row['Salt']);
-													unset($row['Password']);
-                                                    $_SESSION['Email'] = $row['Email'];
-                                                    $_SESSION['loggedin']=true;
-													
-													/**  $update $update = "UPDATE User SET lastLoginDate = getdate(), lastLoginIp= '" . $_SERVER['REMOTE_ADDR'] . "', ip= '" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "' WHERE Email = ? ";
-													$sth = $conn->prepare($update);
-													
-													
-													$emaili=$_POST["email"];
-													
-													$sth->bindParam(1, $emaili);
-													
-													$result=$sth->execute();*/
-
-
-
-
-                                                    echo'<script>window.location="index.php";</script>';
-													die("Redirecting to:index.php"); 
-													
-												} 
-												else{ 
-													print("Login Failed.");
-
-												} 
-											} 
-										?> 
-										
 									</div>
-									
-								</div>
-							</div>
+                                </div>
+						    </fieldset>
+					    </form>
+				    </div>
+                </div>
+
+                <?php
+
+                require 'dbconnect.php';
+
+                if(!empty($_POST)){
+                    $query = " SELECT Userid, Firstname, Password, Salt, Email 	FROM User WHERE Email = ? ";
+                    $email=$_POST['email'];
+
+                    try{
+                        $stmt = $conn->prepare($query);
+                        $stmt->bindParam(1, $email);
+                        $result = $stmt->execute();
+                    }
+
+                    catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); }
+                    $login_ok = false;
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if($row){
+                        $check_password = hash('sha256', $_POST['password'] . $row['Salt']);
+                        for($round = 0; $round < 65536; $round++){
+                            $check_password = hash('sha256', $check_password . $row['Salt']);
+                        }
+                        if($check_password === $row['Password']){
+
+                            $login_ok = true;
+
+                        }
+                    }
+
+                    if($login_ok){
+
+                        unset($row['Salt']);
+                        unset($row['Password']);
+                        $_SESSION['Email'] = $row['Email'];
+                        $_SESSION['loggedin']=true;
 
 
-							
-						</fieldset>
-					</form>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	
-</section>
+                        $update = "UPDATE user SET LastLoginDate = now(), LastLoginIp= '" . $_SERVER['REMOTE_ADDR'] . "' WHERE Email = ? ";
+                        $sth = $conn->prepare($update);
 
-<?php
-	include 'footer.php';
-?>
+                        $emaili=$_POST["email"];
+                        $sth->bindParam(1, $emaili);
+                        $result=$sth->execute();
 
-</body>
+                        echo'<script>window.location="index.php";</script>';
+                        die("Redirecting to:index.php");
+
+                    }
+                    else{
+                        echo"<div class='panel panel-warning'>";
+                        echo"<div class='panel-heading text-center'>Login Failed!</div>";
+                        echo"</div>";
+
+                    }
+                }
+                ?>
+
+	        </div>
+        </section>
+
+    <?php include 'footer.php'; ?>
+
+    </body>
 </html>

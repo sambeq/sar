@@ -230,18 +230,25 @@
 							$stmt->bindParam(11, $country);
 
 							$result = $stmt->execute();
+
+                            $update = "UPDATE User SET CreateDate = now() WHERE Email = ? ";
+                            $sth = $conn->prepare($update);
+
+                            $emaili=$_POST["email"];
+                            $sth->bindParam(1, $emaili);
+                            $result=$sth->execute();
 							
 							//$result = $stmt->execute($query_params);
 						} 
 						catch(PDOException $ex){ die("Failed to run query: " . $ex->getMessage()); }
 						if($result==true ){
 							echo"<div class='panel panel-success'>";
-							echo"<div class='panel-heading'>Your Registration Succeed!</div>";
+							echo"<div class='panel-heading text-center'>Your Registration Succeed!</div>";
 							echo"</div>";
 
 							}else{
 							echo"<div class='panel panel-warning'>";
-							echo"<div class='panel-heading'>Your Registration Failed!</div>";
+							echo"<div class='panel-heading text-center'>Your Registration Failed!</div>";
 							echo"</div>";
 						}
 					}
