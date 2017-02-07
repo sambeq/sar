@@ -1,4 +1,4 @@
-<?php session_start();?>
+
 <nav id="topNav" class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">

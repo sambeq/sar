@@ -78,10 +78,7 @@
     <input id="destination-input" class="controls" type="text"
         placeholder="Enter a destination location">
 
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-driving" checked="checked">
-      <label for="changemode-driving">Driving</label>
-    </div>
+
 
     <div id="map"></div>
 
@@ -126,7 +123,7 @@
           });
         }
 
-        setupClickListener('changemode-driving', 'DRIVING');
+
 
         function expandViewportToFitPlace(map, place) {
           if (place.geometry.viewport) {

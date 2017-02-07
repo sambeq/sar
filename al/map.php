@@ -1,33 +1,9 @@
-<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>MAP</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		
-		<!-- Bootstrap Core CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		
-		<!-- Custom CSS -->
-		<link href="css/custom.css" rel="stylesheet">
-		
-		<!-- jQuery -->
-		<script src="js/jquery.js"></script>
-		
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
-		
-		<meta charset="utf-8">
-		
-		<meta name="description" content="The first carpooling company in Albania." />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="generator" content="Codeply">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-		<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-		<link rel="stylesheet" href="css/styles.css" />
+
+        <?php include 'head.php'; ?>
 		
 		    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 			<meta charset="utf-8">
@@ -56,6 +32,8 @@
 
       #origin-input,
       #destination-input {
+
+        color: #282828;
         background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
@@ -87,12 +65,10 @@
     </style>
 		
 	</head>
-	
-	
 	<body>
-		<?php
-			include '.navbar.php';
-		?>
+
+        <?php include 'map-navbar.php'; ?>
+
 	<div>
 	</div>
 		
@@ -103,12 +79,6 @@
         placeholder="Enter a destination location">
 
     <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" >
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">Transit</label>
-
       <input type="radio" name="type" id="changemode-driving" checked="checked">
       <label for="changemode-driving">Driving</label>
     </div>
@@ -155,8 +125,7 @@
             travel_mode = mode;
           });
         }
-        setupClickListener('changemode-walking', 'WALKING');
-        setupClickListener('changemode-transit', 'TRANSIT');
+
         setupClickListener('changemode-driving', 'DRIVING');
 
         function expandViewportToFitPlace(map, place) {

@@ -1,4 +1,3 @@
-<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,7 +10,7 @@
 
     <?php include 'navbar.php'; ?>
 		
-		<section class="bg-primary" id="one">
+		<section style= "color:black" class="bg-primary" id="one">
 			<div class="container">    
 				<div class="row">
 					<div class="col-sm-12">
@@ -123,6 +122,8 @@
 									
 								</div>
 							</div>
+
+
 							
 						</fieldset>
 					</form>

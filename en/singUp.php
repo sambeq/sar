@@ -1,4 +1,3 @@
-<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,7 +11,7 @@
 
     <?php include 'navbar.php'; ?>
 		
-		<section class="bg-primary" id="one">
+		<section style= "color:black" class="bg-primary" id="one">
 			
 			<div class="container">    
 				<div class="row">
@@ -245,8 +244,7 @@
 							echo"<div class='panel-heading'>Your Registration Failed!</div>";
 							echo"</div>";
 						}
-					} 
-					
+					}
 					
 				?>
 			</div>

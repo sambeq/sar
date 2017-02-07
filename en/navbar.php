@@ -1,5 +1,5 @@
-
-<nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+<?php session_start();?>
+<nav id="topNav" style="color: black" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
 				                
                 <li>
-                    <a class="page-scroll" href="about.php">About</a>
+                    <a class="page-scroll" href="info.php">Info</a>
 				</li>
                 <li>
                     <a class="page-scroll" href="findaride.php">Find a ride</a>
@@ -51,6 +51,9 @@
 				<?php } ?>
 			</ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="../al">shqip</a>
+                </li>
                 <li>
                     <?php
 						if ( (isset($_SESSION['loggedin'])) && $_SESSION['loggedin']) {
