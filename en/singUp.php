@@ -10,7 +10,7 @@
 	<body>
 
     <?php include 'navbar.php'; ?>
-		
+
 		<section style= "color:black" class="bg-primary" id="one">
 			
 			<div class="container">

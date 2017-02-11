@@ -13,7 +13,7 @@
     });
     
     new WOW().init();
-   
+    
     $('a.page-scroll').bind('click', function(event) {
         var $ele = $(this);
         $('html, body').stop().animate({

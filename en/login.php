@@ -11,15 +11,15 @@
     <?php include 'navbar.php'; ?>
 		
 		<section style= "color:black" class="bg-primary" id="one">
-			<div class="container">    
+			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<form class="form-horizontal" action="login.php" method="post">
 							<fieldset style="color:black">
-								
+
 								<!-- Form Name -->
 								<legend style= "color:red" >LOG IN</legend>
-								
+
 								<div class="col-md-6 col-md-offset-2">
 									<div class="panel-body">
 										<form class="form-horizontal" role="form">
