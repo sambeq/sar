@@ -103,7 +103,6 @@
 											<div class="form-group">
 												<label for="phone" class="col-sm-3 control-label">Phone</label>
 												<div class="col-sm-9">
-													
 													<input style="color:black" name="phone" type="text" class="form-control bfh-phone" data-country="countries_states1">
 												</div>
 											</div>
@@ -194,7 +193,8 @@
 						if($row){ die("This email address is already registered"); } 
 						
 						// Add row to database 
-						$query = "INSERT INTO User (  Firstname, Lastname, Username, Birthdate, Password, Phone, Email, Gender, Salt, State, Country ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+						$query = "INSERT INTO User (  Firstname, Lastname, Username, Birthdate, Password, 
+                        Phone, Email, Gender, Salt, State, Country ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 						
 						// Security measures
 						$salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647)); 
