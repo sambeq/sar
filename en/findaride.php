@@ -24,15 +24,13 @@
 
                         <div class="form-group">
                             <div class="col-sm-6 col-md-12 col-lg-12">
-                                <input name="from" type="text" style="color:black" class="form-control "
-                                       placeholder="From..">
+                                <input name="from" type="text" style="color:black" class="form-control" placeholder="From..">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-6 col-md-12 col-lg-12">
-                                <input name="to" type="text" style="color:black" class="form-control "
-                                       placeholder="To..">
+                                <input name="to" type="text" style="color:black" class="form-control " placeholder="To..">
                             </div>
                         </div>
 
@@ -59,7 +57,7 @@
 														join address adr1 on ct.DepartureSourceId = adr1.AddressId
 														join address adr2 on ct.DestinationId= adr2.AddressId
 														where adr1.Country = ?
-														and adr2.Country = ?;";
+														and adr2.Country = ?";
 
 
                             $stmt = $conn->prepare($sql);
@@ -100,7 +98,7 @@
 
                                 }
                             } else
-                                echo "<h2>There is no Product with that name, category, price or description!</h2>";
+                                echo "<h2 style='color:black'>There is no Product with that name, category, price or description!</h2>";
 
                             echo "</table>";
                         }
