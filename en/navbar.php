@@ -58,7 +58,7 @@
                     <?php
 						if ( (isset($_SESSION['loggedin'])) && $_SESSION['loggedin']) {
 
-                            echo "<li><a href=''><span class='glyphicon glyphicon-log-in'></span>" . $_SESSION['Email'] . "</a></li>";
+                            echo "<li><a href='user.php'><span class='glyphicon glyphicon-log-in'></span>" . $_SESSION['Email'] . "</a></li>";
                             echo "<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Log Out</a></li>";
 
 							} else {
