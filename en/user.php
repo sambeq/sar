@@ -48,6 +48,16 @@
     <div class="row">
         <div class="col-md-10 ">
             <form class="form-horizontal">
+
+                <?php
+                require 'dbconnect.php'
+                /*$select = "SELECT * FROM user WHERE Userid=".$_GET['id'];
+
+                $sth = $conn->prepare($select);
+                $sth->execute();
+
+                $result = $sth->fetch(PDO::FETCH_ASSOC);*/
+                ?>
                 <fieldset>
 
                     <!-- Form Name -->
@@ -61,8 +71,9 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-male" style="font-size: 20px;"></i>
                                 </div>
-                                <input id="username" name="username" type="text" placeholder="Username"
-                                       class="form-control input-md">
+                                <input type="hidden" name="catID" value="<?php echo $_GET['id']; ?>" />
+                                <input id="username" name="username" type="text" placeholder="Username" value="<?php echo $result['Username']; ?>"
+                                       class="form-control input-md" readonly>
                             </div>
                         </div>
                     </div>
@@ -77,7 +88,7 @@
                                     </i>
                                 </div>
                                 <input id="firstname" name="firstname)" type="text" placeholder="Firstaname"
-                                       class="form-control input-md">
+                                       class="form-control input-md" readonly>
                             </div>
                         </div>
                     </div>
@@ -92,7 +103,7 @@
                                     </i>
                                 </div>
                                 <input id="lastname)" name="lastname" type="text" placeholder="Lastname"
-                                       class="form-control input-md">
+                                       class="form-control input-md" readonly>
                             </div>
                         </div>
                     </div>
@@ -101,7 +112,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
                         <div class="col-md-4">
-                            <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+                            <input id="Upload photo" name="Upload photo" class="input-file" type="file" readonly>
                         </div>
                     </div>
 
@@ -114,7 +125,7 @@
                                     <i class="fa fa-birthday-cake"></i>
                                 </div>
                                 <input id="Date Of Birth" name="Date Of Birth" type="date" placeholder="Date Of Birth"
-                                       class="form-control input-md">
+                                       class="form-control input-md" readonly>
                             </div>
                         </div>
                     </div>
@@ -169,7 +180,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <input style="color:black" name="phone" type="text" class="form-control bfh-phone"
-                                       data-country="countries_states">
+                                       data-country="countries_states" >
                             </div>
                         </div>
                     </div>
@@ -183,45 +194,45 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <input id="Email Address" name="Email Address" type="text" placeholder="Email Address"
-                                       class="form-control input-md">
+                                       class="form-control input-md" readonly>
                             </div>
                         </div>
                     </div>
 
                     <!-- Multiple Checkboxes -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="Languages Known">Languages Known</label>
+                        <label class="col-md-4 control-label" for="pref">Smoking</label>
                         <div class="col-md-4">
                             <div class="checkbox">
-                                <label for="Languages Known-0">
-                                    <input type="checkbox" name="Languages Known" id="Languages Known-0" value="1">
-                                    Nepali
+                                <label for="Music">
+                                    <input type="checkbox" id="Music" name="pref[]" value="Music">
+                                    Music
                                 </label>
                             </div>
                             <div class="checkbox">
-                                <label for="Languages Known-1">
-                                    <input type="checkbox" name="Languages Known" id="Languages Known-1" value="2">
-                                    Newari
+                                <label for="Talking">
+                                    <input type="checkbox" id="Talking" name="pref[]" value="Talking">
+                                    Talking
                                 </label>
                             </div>
                             <div class="checkbox">
-                                <label for="Languages Known-2">
-                                    <input type="checkbox" name="Languages Known" id="Languages Known-2" value="3">
-                                    English
+                                <label for="Animals">
+                                    <input type="checkbox" id="Animals" name="pref[]" value="Animals">
+                                    Animals
                                 </label>
                             </div>
                             <div class="checkbox">
-                                <label for="Languages Known-3">
-                                    <input type="checkbox" name="Languages Known" id="Languages Known-3" value="4">
-                                    Hindi
+                                <label for="Smoking">
+                                    <input type="checkbox" id="Smoking" name="pref[]" value="Smoking">
+                                    Smoking
                                 </label>
                             </div>
 
                             <div class="othertop">
-                                <label for="Languages Known-4">
+                                <label for="other">
                                 </label>
-                                <input type="input" name="LanguagesKnown" id="Languages Known-4"
-                                       placeholder="Other Language">
+                                <input type="input" name="pref" id="other"
+                                       placeholder="Other Preferences">
                             </div>
                         </div>
                     </div>
