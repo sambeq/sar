@@ -8,5 +8,5 @@
         <link rel="stylesheet" href="./css/bootstrap.min.css" />
         <link rel="stylesheet" href="./css/animate.min.css" />
         <link rel="stylesheet" href="./css/ionicons.min.css" />
-        <link rel="stylesheet" href="./css/styles1.css" />
+        <link rel="stylesheet" href="./css/stili.css" />
 
