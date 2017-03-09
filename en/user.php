@@ -242,7 +242,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
-                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span>
+                            <a href="edit_user.php" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span>
                                 Submit</a>
                             <a href="#" class="btn btn-danger" value=""><span
                                         class="glyphicon glyphicon-remove-sign"></span> Clear</a>
