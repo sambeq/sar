@@ -69,6 +69,8 @@
             font-size: 13px;
             font-weight: 300;
         }
+
+
     </style>
 
 </head>
@@ -84,48 +86,22 @@
                     <form class="form-horizontal" action="offeraride.php" method="post">
                         <fieldset style="color:black">
 
-                            <!-- Form Name -->
-                            <legend style="color:red">From..</legend>
                             <div class="panel-body">
                                 <!-- Place-->
                                 <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-3 control-label">Place</label>
+                                    <label class="col-sm-3 control-label">From:</label>
                                     <div class="col-sm-9">
-                                        <input style="color:black" name="from-place" type="text" id="origin-input"
-                                               class="controls"
+                                        <input style="color:black" name="from" type="text" id="origin-input"
+                                               class="form-control"
                                                placeholder="Enter an origin location" required="">
                                     </div>
                                 </div>
-                                <!-- State -->
                                 <div class="form-group">
-                                    <label for="state" class="col-sm-3 control-label">State</label>
+                                    <label class="col-sm-3 control-label">To:</label>
                                     <div class="col-sm-9">
-                                        <select style="color:black" name="from-state" id="countries_states1"
-                                                class="form-control bfh-countries" data-country="AL"></select>
-                                    </div>
-                                </div>
-                                <!-- Country -->
-                                <div class="form-group">
-                                    <label for="country" class="col-sm-3 control-label">Country</label>
-                                    <div class="col-sm-9">
-                                        <select style="color:black" name="from-country" class="form-control bfh-states"
-                                                data-country="countries_states1"></select>
-                                    </div>
-                                </div>
-                                <!-- Place-->
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-3 control-label">Place</label>
-                                    <div class="col-sm-9">
-                                        <input style="color:black" name="from-place" type="text" class="form-control"
-                                               placeholder="Place" required="">
-                                    </div>
-                                </div>
-                                <!-- Street -->
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Street</label>
-                                    <div class="col-sm-9">
-                                        <input style="color:black" name="from-street" type="text" class="form-control"
-                                               placeholder="Street" required="">
+                                        <input style="color:black" name="to" type="text" id="destination-input"
+                                               class="form-control"
+                                               placeholder="Enter a destination location" required="">
                                     </div>
                                 </div>
                                 <!-- Date -->
@@ -143,53 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <!-- Form Name -->
-                            <legend style="color:red">To..</legend>
-                            <div class="panel-body">
-                                <!-- Place-->
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-3 control-label">Place</label>
-                                    <div class="col-sm-9">
-                                        <input style="color:black" name="to-place" type="text" id="destination-input"
-                                               class="controls"
-                                               placeholder="Enter a destination location" required="">
-                                    </div>
-                                </div>
-                                <!-- State -->
-                                <div class="form-group">
-                                    <label for="state" class="col-sm-3 control-label">State</label>
-                                    <div class="col-sm-9">
-                                        <select style="color:black" name="to-state" id="countries_states2"
-                                                class="form-control bfh-countries" data-country="AL"></select>
-                                    </div>
-                                </div>
-                                <!-- Country -->
-                                <div class="form-group">
-                                    <label for="country" class="col-sm-3 control-label">Country</label>
-                                    <div class="col-sm-9">
-                                        <select style="color:black" name="to-country" class="form-control bfh-states"
-                                                data-country="countries_states2"></select>
-                                    </div>
-                                </div>
-                                <!-- Place-->
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-3 control-label">Place</label>
-                                    <div class="col-sm-9">
-                                        <input style="color:black" name="to-place" type="text" class="form-control"
-                                               placeholder="Place" required="">
-                                    </div>
-                                </div>
-                                <!-- Street -->
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-3 control-label">Street</label>
-                                    <div class="col-sm-9">
-                                        <input style="color:black" name="to-street" type="text" class="form-control"
-                                               placeholder="Street" required="">
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- MAP -->
                             <div id='map' style='height:500px;width:500px;'></div>
 
                             <script>
@@ -202,10 +132,7 @@
                                         mapTypeControl: false,
                                         center: {lat: 41.153332, lng: 20.1683},
                                         zoom: 8
-
-
                                     });
-
                                     new AutocompleteDirectionsHandler(map);
                                 }
 
@@ -219,7 +146,7 @@
                                     this.travelMode = 'DRIVING';
                                     var originInput = document.getElementById('origin-input');
                                     var destinationInput = document.getElementById('destination-input');
-                                    var modeSelector = document.getElementById('mode-selector');
+
                                     this.directionsService = new google.maps.DirectionsService;
                                     this.directionsDisplay = new google.maps.DirectionsRenderer;
                                     this.directionsDisplay.setMap(map);
@@ -229,11 +156,8 @@
                                     var destinationAutocomplete = new google.maps.places.Autocomplete(
                                         destinationInput, {placeIdOnly: true});
 
-
                                     this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
                                     this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
-
                                 }
 
                                 // Sets a listener on a radio button to change the filter type on Places
@@ -263,7 +187,6 @@
                                         }
                                         me.route();
                                     });
-
                                 };
 
                                 AutocompleteDirectionsHandler.prototype.route = function () {
@@ -287,12 +210,11 @@
 
                             </script>
                             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZeg9YwJK_IjR4vkT5F2RHGaZt7gLKoz8&libraries=places&callback=initMap"
-                                    async defer></script>
-                        </fieldset>
-                        <fieldset style="color:black">
+                                    async defer>
+
+                            </script>
 
                             <!-- Form Name -->
-                            <legend style="color:red">Other..</legend>
                             <div class="panel-body">
                                 <!-- Seats -->
                                 <div class="form-group">
@@ -308,7 +230,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- Country -->
+                                <!-- Preferences -->
                                 <div class="form-group">
                                     <label for="seats" class="col-sm-3 control-label">Preferences</label>
                                     <div class="col-sm-9">
@@ -340,14 +262,12 @@
 
         if (!empty($_POST)) {
 
-            $query = "INSERT INTO address (  AddressId, State, Country, Place, Street ) VALUES ( ?, ?, ?, ?, ?) ";
+            $query = "INSERT INTO address (  AddressId, State ) VALUES ( ?, ?) ";
 
 
             $addid = rand();
-            $fstate = $_POST['from-state'];
-            $fcountry = $_POST['from-country'];
-            $fplace = $_POST['from-place'];
-            $fstreet = $_POST['from-street'];
+            $fstate = $_POST['from'];
+
 
 
             $crt_qry = "INSERT INTO createtrip (  Seats, DepartureDate, DepartureTime, DepartureSourceId, DestinationId) VALUES ( ?, ?, ?, ?, ? ) ";
@@ -360,18 +280,13 @@
             $query1 = "INSERT INTO address (  AddressId, State, Country, Place, Street ) VALUES ( ?, ?, ?, ?, ?) ";
 
             $addid1 = $addid + 1;
-            $tstate = $_POST['to-state'];
-            $tcountry = $_POST['to-country'];
-            $tplace = $_POST['to-place'];
-            $tstreet = $_POST['to-street'];
+            $tstate = $_POST['to'];
+
 
             $stmt = $conn->prepare($query);
 
             $stmt->bindParam(1, $addid);
             $stmt->bindParam(2, $fstate);
-            $stmt->bindParam(3, $fcountry);
-            $stmt->bindParam(4, $fplace);
-            $stmt->bindParam(5, $fstreet);
 
             $stmt->execute();
 
@@ -390,10 +305,6 @@
 
             $stmt1->bindParam(1, $addid1);
             $stmt1->bindParam(2, $tstate);
-            $stmt1->bindParam(3, $tcountry);
-            $stmt1->bindParam(4, $tplace);
-            $stmt1->bindParam(5, $tstreet);
-
 
             $stmt1->execute();
 
