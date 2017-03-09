@@ -1,4 +1,5 @@
 <?php session_start();?>
+
 <nav id="topNav" style="color: black" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -42,9 +43,7 @@
 
 						
 					?>
-				<li>
-                    <a class="page-scroll" href="map.php">MAP</a>
-				</li>
+
 				<!--<li>
                     <a class="page-scroll" href="geolocation.php">Location</a>
 				</li> -->
@@ -61,8 +60,9 @@
                             echo "<li><a href='user.php'><span class='glyphicon glyphicon-log-in'></span>" . $_SESSION['Email'] . "</a></li>";
                             echo "<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Log Out</a></li>";
 
+
 							} else {
-                            echo "<a href='login.php'> Log In</a></li>";
+                            echo "<li><a href='login.php'> Log In</a></li>";
                             echo "<li><a href='singUp.php'> Register</a></li>";
 						}
 					?>
