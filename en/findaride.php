@@ -52,7 +52,7 @@
                             $to = $_POST['to'];
 
 
-                            $sql = "SELECT u.Firstname, u.Lastname, ct.Seats, ct.DepartureTime, ct.DepartureDate, adr1.Street as DepartureStreet, adr1.Country as DepartureCity, adr2.Street, adr2.Country 
+                            /*$sql = "SELECT u.Firstname, u.Lastname, ct.Seats, ct.DepartureTime, ct.DepartureDate, adr1.Street as DepartureStreet, adr1.Country as DepartureCity, adr2.Street, adr2.Country
 														from user u join createtrip ct on u.UserId=ct.UserId
 														join address adr1 on ct.DepartureSourceId = adr1.AddressId
 														join address adr2 on ct.DestinationId= adr2.AddressId
@@ -65,20 +65,34 @@
                             $stmt->bindParam(2, $to);
 
                             $stmt->execute();
+                            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
+
+                            $sql = "SELECT u.Firstname, u.Lastname, ct.Seats, ct.DepartureDate, ct.DepartureTime, ct.Price , a.Source , a.Destination 
+														from user u join createtrip ct on u.UserId=ct.UserId
+														join address a on ct.AddressId = a.AddressId
+														where a.Source like '%$from%'
+														or a.Destination like '%$to%' ";
+
+                            //where a.Destination like '%Libr%'
+                            //or a.Source like '%Ers%'";
+                            $stmt = $conn->prepare($sql);
+                            // $stmt->bindParam(1, $from);
+                            // $stmt->bindParam(2, $to);
+
+                            $stmt->execute();
                             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-                            echo "<table class=\"table table-striped\" style= \"color:Black\">";
+                            echo "<table class=\"table\" style= \"color:Black\">";
                             echo "<tr>";
                             echo "<th>Firstname</th>";
                             echo "<th>Lastname</th>";
                             echo "<th>Seats</th>";
-                            echo "<th>Departure Time</th>";
                             echo "<th>Departure Date</th>";
-                            echo "<th>Departure Street</th>";
-                            echo "<th>Departure City</th>";
-                            echo "<th>Destination Street</th>";
-                            echo "<th>Destination Country </th>";
+                            echo "<th>Departure Time</th>";
+                            echo "<th>Source</th>";
+                            echo "<th>Destination</th>";
+                            echo "<th>Price</th>";
                             echo "</tr>";
 
                             if (count($result) > 0) {
@@ -88,12 +102,11 @@
                                     echo "<td>" . $row["Firstname"] . "</td>";
                                     echo "<td>" . $row["Lastname"] . "</td>";
                                     echo "<td>" . $row["Seats"] . "</td>";
-                                    echo "<td>" . $row["DepartureTime"] . "</td>";
                                     echo "<td>" . $row["DepartureDate"] . "</td>";
-                                    echo "<td>" . $row["DepartureStreet"] . "</td>";
-                                    echo "<td>" . $row["DepartureCity"] . "</td>";
-                                    echo "<td>" . $row["Street"] . "</td>";
-                                    echo "<td>" . $row["Country"] . "</td>";
+                                    echo "<td>" . $row["DepartureTime"] . "</td>";
+                                    echo "<td>" . $row["Source"] . "</td>";
+                                    echo "<td>" . $row["Destination"] . "</td>";
+                                    echo "<td>" . $row["Price"] . "</td>";
                                     echo "</tr>";
 
                                 }

@@ -29,7 +29,7 @@
 		</div>
 		<?php
 					require 'dbconnect.php';
-							$uploaddir = '/xampp/htdocs/sar_org/sar/en/img/uploads/';
+							$uploaddir = '/xampp/htdocs/sar/en/img/uploads/';
 							$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
 							

@@ -47,26 +47,39 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 ">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="edit.php" method="post">
                 <div class="col-md-2 hidden-xs">
                     <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg"
                          class="img-responsive img-thumbnail ">
                 </div>
 
+
                 <fieldset>
+
                     <!-- Form Name -->
+
                     <legend>User profile form requirement</legend>
+
+                    <!-- Text input username-->
                     <?php
 
                     require 'dbconnect.php';
                     $email = $_SESSION['Email'];
 
-                    $query = "SELECT UserId, Username, Firstname, Lastname, Birthdate,Gender, State,Country, Phone,Email,Preferences FROM user where  Email = '$email'";
+                    $query = "SELECT UserId,Username, Firstname, Lastname, Birthdate,Gender, State,Country, Phone,Email,Preferences FROM user where  Email = '$email'";
 
                     $stmt = $conn->prepare($query);
                     $stmt->execute();
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+                    //echo $result['Firstname'];
+
                     ?>
+
+
+                    <!-- Text input firstname-->
+
 
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="username">Username</label>
@@ -75,17 +88,14 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-male" style="font-size: 20px;"></i>
                                 </div>
-                                <input type="hidden" name="UserId" value=""/>
+
                                 <input id="username" name="username" type="text" placeholder="Username"
                                        value="<?php echo $result['Username']; ?>"
 
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
-
-                    <!-- Text input firstname-->
-
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="Firstname">Firstname</label>
                         <div class="col-md-4">
@@ -97,7 +107,7 @@
                                 </div>
                                 <input id="firstname" name="firstname" type="text" placeholder="Firstaname"
                                        value="<?php echo $result['Firstname']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
 
                         </div>
@@ -115,7 +125,7 @@
                                 </div>
                                 <input id="lastname" name="lastname" type="text" placeholder="Lastname"
                                        value="<?php echo $result['Lastname']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -136,9 +146,9 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-birthday-cake"></i>
                                 </div>
-                                <input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Date Of Birth"
+                                <input id="dob" name="dob" type="text" placeholder="Date Of Birth"
                                        value="<?php echo $result['Birthdate']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -154,7 +164,7 @@
                                 </div>
                                 <input id="gender" name="gender" type="text" placeholder="Gender"
                                        value="<?php echo $result['Gender']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
 
                             </div>
                         </div>
@@ -171,7 +181,7 @@
                                 </div>
                                 <input id="state" name="state" type="text" placeholder="State"
                                        value="<?php echo $result['State']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -187,7 +197,7 @@
                                 </div>
                                 <input id="country" name="country" type="text" placeholder="Country"
                                        value="<?php echo $result['Country']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -203,7 +213,7 @@
                                 </div>
                                 <input id="phone" name="phone" type="text" placeholder="Phone"
                                        value="<?php echo $result['Phone']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -217,9 +227,9 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-envelope"></i>
                                 </div>
-                                <input id="Email Address" name="Email Address" type="text" placeholder="Email Address"
+                                <input id="Email Address" name="email" type="text" placeholder="Email Address"
                                        value="<?php echo $result['Email']; ?>"
-                                       class="form-control input-md" readonly>
+                                       class="form-control input-md">
                             </div>
                         </div>
                     </div>
@@ -234,8 +244,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <textarea id="Preferences" name="Preferences" type="text" placeholder="Preferences"
-                                          class="form-control input-md"
-                                          readonly><?php echo $result['Preferences']; ?></textarea>
+                                          class="form-control input-md"><?php echo $result['Preferences']; ?></textarea>
 
                             </div>
                         </div>
@@ -245,11 +254,65 @@
                         <div class="col-md-4">
                             <div class="input-group">
 
-                                <a href='edit.php' name="send" type="submit" class="btn btn-success btn-md">Edit</a>
+                                <a href='user.php'>
+                                    <button name="Send" type="submit">Change</button>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </fieldset>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="Edit"></label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+
+                                <input type="hidden" name="UserId" value="<?php echo $result['UserId']; ?>"/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php
+
+                    if (isset($_POST["Send"])) {
+                        require 'dbconnect.php';
+                        $email = $_SESSION['Email'];
+
+                        $UserId = $_POST['UserId'];
+                        $username = $_POST['username'];
+                        $firstname = $_POST['firstname'];
+                        $lastname = $_POST['lastname'];
+                        $dob = $_POST['dob'];
+                        $gender = $_POST['gender'];
+                        $state = $_POST['state'];
+                        $country = $_POST['country'];
+                        $phone = $_POST['phone'];
+                        $email = $_POST['email'];
+                        $preferences = $_POST['Preferences'];
+
+                        $query = "Update user Set Username= '$username', Firstname = '$firstname', 
+					Lastname = '$lastname', Birthdate = '$dob',Gender = '$gender', State = '$state',
+					Country = '$country', Phone = '$phone',Email = '$email',Preferences = '$preferences' 
+					where  UserId = '$UserId'";
+
+
+                        $stmt = $conn->prepare($query);
+                        $stmt->execute();
+                        //$result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        if ($stmt)
+                            echo "<script>window.location = 'user.php';</script>";
+
+                        else
+                            echo "Die Kategorie wurde nicht ge&auml;ndert!<br />" . $stmt;
+
+
+                    }
+
+
+                    ?>
+
+
+            </form>
+
         </div>
     </div>
 </div>

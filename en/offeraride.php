@@ -69,8 +69,6 @@
             font-size: 13px;
             font-weight: 300;
         }
-
-
     </style>
 
 </head>
@@ -85,19 +83,22 @@
                 <div class="col-sm-12 col-lg-6 col-md-6">
                     <form class="form-horizontal" action="offeraride.php" method="post">
                         <fieldset style="color:black">
-
+                            <!-- Form Name -->
+                            <legend style="color:red">From..</legend>
                             <div class="panel-body">
                                 <!-- Place-->
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">From:</label>
+                                    <label for="origin-input" class="col-sm-3 control-label">From</label>
                                     <div class="col-sm-9">
                                         <input style="color:black" name="from" type="text" id="origin-input"
                                                class="form-control"
                                                placeholder="Enter an origin location" required="">
                                     </div>
                                 </div>
+
+                                <!-- Place-->
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">To:</label>
+                                    <label for="destination-input" class="col-sm-3 control-label">To</label>
                                     <div class="col-sm-9">
                                         <input style="color:black" name="to" type="text" id="destination-input"
                                                class="form-control"
@@ -106,11 +107,14 @@
                                 </div>
                                 <!-- Date -->
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">Date</label>
+                                    <label for="birthDate" class="col-sm-3 control-label">Date</label>
                                     <div class="col-sm-9">
-                                        <input style="color:black" name="date" type="date" class="form-control">
+                                        <input style="color:black" name="date" type="date" id="birthDate"
+                                               class="form-control">
                                     </div>
                                 </div>
+
+
                                 <!-- Time -->
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Time</label>
@@ -118,8 +122,9 @@
                                         <input style="color:black" name="time" type="time" class="form-control">
                                     </div>
                                 </div>
+
+
                             </div>
-                            <!-- MAP -->
                             <div id='map' style='height:500px;width:500px;'></div>
 
                             <script>
@@ -132,7 +137,10 @@
                                         mapTypeControl: false,
                                         center: {lat: 41.153332, lng: 20.1683},
                                         zoom: 8
+
+
                                     });
+
                                     new AutocompleteDirectionsHandler(map);
                                 }
 
@@ -146,7 +154,6 @@
                                     this.travelMode = 'DRIVING';
                                     var originInput = document.getElementById('origin-input');
                                     var destinationInput = document.getElementById('destination-input');
-
                                     this.directionsService = new google.maps.DirectionsService;
                                     this.directionsDisplay = new google.maps.DirectionsRenderer;
                                     this.directionsDisplay.setMap(map);
@@ -156,8 +163,11 @@
                                     var destinationAutocomplete = new google.maps.places.Autocomplete(
                                         destinationInput, {placeIdOnly: true});
 
+
                                     this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
                                     this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+
                                 }
 
                                 // Sets a listener on a radio button to change the filter type on Places
@@ -187,6 +197,7 @@
                                         }
                                         me.route();
                                     });
+
                                 };
 
                                 AutocompleteDirectionsHandler.prototype.route = function () {
@@ -210,12 +221,31 @@
 
                             </script>
                             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZeg9YwJK_IjR4vkT5F2RHGaZt7gLKoz8&libraries=places&callback=initMap"
-                                    async defer>
-
-                            </script>
+                                    async defer></script>
+                        </fieldset>
+                        <fieldset style="color:black">
 
                             <!-- Form Name -->
+                            <legend style="color:red">Other..</legend>
                             <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Model</label>
+                                    <div class="col-sm-9">
+                                        <input style="color:black" name="model" type="text" id="model"
+                                               class="form-control"
+                                               placeholder="Enter a destination location" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Plate Nr</label>
+                                    <div class="col-sm-9">
+                                        <input style="color:black" name="plate" type="text" id="plate"
+                                               class="form-control"
+                                               placeholder="Enter a destination location" required="">
+                                    </div>
+                                </div>
+
                                 <!-- Seats -->
                                 <div class="form-group">
                                     <label for="seats" class="col-sm-3 control-label">Seats</label>
@@ -230,29 +260,24 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- Preferences -->
+
                                 <div class="form-group">
-                                    <label for="seats" class="col-sm-3 control-label">Preferences</label>
-                                    <div class="col-sm-9">
-                                        <input type="checkbox" name="pref[]" value="Music">
-                                        <label>Music </label><br>
-                                        <input type="checkbox" name="pref[]" value="Talking">
-                                        <label>Talking </label><br>
-                                        <input type="checkbox" name="pref[]" value="Animals">
-                                        <label>Animals </label><br>
-                                        <input type="checkbox" name="pref[]" value="Smoking">
-                                        <label>Smoking </label><br>
+                                    <label for="c2" class="col-sm-3 control-label">Price</label>
+                                    <div class=" col-sm-9 input-group">
+                                        <span class="input-group-addon">ALL</span>
+                                        <input type="number" name="price" value="10000"max ="10000" min="0"
+                                                class="form-control currency" id="c2"/>
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <!-- Buttons -->
-                        <div class="form-group last">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button name="submit" type="submit" class="btn btn-success btn-md">Submit</button>
-                                <button type="reset" class="btn btn-danger btn-md">Reset</button>
-                            </div>
-                        </div>
+
+                                <!-- Buttons -->
+                                <div class="form-group last">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button name="submit" type="submit" class="btn btn-success btn-md">Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-md">Reset</button>
+                                    </div>
+                                </div>
                     </form>
                 </div>
             </div>
@@ -260,82 +285,49 @@
         <?php
         require 'dbconnect.php';//verbindung zur DB
 
-        if (!empty($_POST)) {
+        $email = $_SESSION['Email'];
 
-            $query = "INSERT INTO address (  AddressId, State ) VALUES ( ?, ?) ";
+        if (isset($_POST['submit'])) {
 
+            $id1 = rand();
+            $source = $_POST['from'];
+            $destination = $_POST['to'];
+            $adr = "INSERT INTO address (  AddressId, Source, Destination ) VALUES ( $id1,'$source', '$destination') ";
 
-            $addid = rand();
-            $fstate = $_POST['from'];
+            $stmt1 = $conn->prepare($adr);
+            $stmt1->execute();
 
+            $user = "select UserId from user where Email= '$email'";
+            $stmt3 = $conn->prepare($user);
+            $stmt3->execute();
+            $userid = $stmt3->fetch(PDO::FETCH_ASSOC);
 
+            $model = $_POST['model'];
+            $plate = $_POST['plate'];
+            $car = "insert into cardetails (Model, PlateNr, UserId) VALUES ('$model', '$plate', $userid[UserId])";
+            $stmt4 = $conn->prepare($car);
+            $stmt4->execute();
 
-            $crt_qry = "INSERT INTO createtrip (  Seats, DepartureDate, DepartureTime, DepartureSourceId, DestinationId) VALUES ( ?, ?, ?, ?, ? ) ";
+            $car1 = "select CarId from cardetails where UserId=$userid[UserId]";
+            $stmt5 = $conn->prepare($car1);
+            $stmt5->execute();
+            $carid = $stmt5->fetch(PDO::FETCH_ASSOC);
+
 
             $seats = $_POST['seats'];
             $date = $_POST['date'];
             $time = $_POST['time'];
+            $price = $_POST['price'];
+            $offer = "insert into createtrip (Seats,UserId, CarId, DepartureDate, DepartureTime, AddressId, Price) values ($seats, $userid[UserId], $carid[CarId], '$date','$time' ,$id1, $price)";
 
-
-            $query1 = "INSERT INTO address (  AddressId, State, Country, Place, Street ) VALUES ( ?, ?, ?, ?, ?) ";
-
-            $addid1 = $addid + 1;
-            $tstate = $_POST['to'];
-
-
-            $stmt = $conn->prepare($query);
-
-            $stmt->bindParam(1, $addid);
-            $stmt->bindParam(2, $fstate);
-
-            $stmt->execute();
-
-
-            $crt_stmt = $conn->prepare($crt_qry);
-
-            $crt_stmt->bindParam(1, $seats);
-            $crt_stmt->bindParam(2, $date);
-            $crt_stmt->bindParam(3, $time);
-            $crt_stmt->bindParam(4, $addid);
-            $crt_stmt->bindParam(5, $addid1);
-
-            $crt_stmt->execute();
-
-            $stmt1 = $conn->prepare($query1);
-
-            $stmt1->bindParam(1, $addid1);
-            $stmt1->bindParam(2, $tstate);
-
-            $stmt1->execute();
-
-
-            $query2 = "SELECT * from user";
-            $stmt = $conn->prepare($query2);
-            $stmt->execute();
-            $total_found = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($total_found > 0) {
-                $my_value = $stmt->fetch(PDO::FETCH_ASSOC);
-                $my_stored_preference = explode(',', $my_value['Preferences']);
-            }
-
-            if (isset($_POST['submit'])) {
-                $all_preferences_value = implode(", ", $_POST['pref']);
-                if ($total_found > 0) {
-                    //update
-                    $upd_qry = "UPDATE user SET Preferences='" . $all_preferences_value . "'";
-                    $stmt = $conn->prepare($upd_qry);
-                    $result = $stmt->execute();
-
-                } else {
-                    //insert
-                    $ins_qry = "INSERT INTO users(Preferences) VALUES('" . $all_preferences_value . "')";
-                    $stmt = $conn->prepare($ins_qry);
-                    $result = $stmt->execute();
-                }
-            }
+            $stmt6 = $conn->prepare($offer);
+            $stmt6->execute();
         }
+
+
         //http://stackoverflow.com/questions/27578858/php-insert-multiple-check-boxes-values-into-one-mysql-cloumn
         ?>
+
 
 
         <?php
@@ -381,4 +373,3 @@ include 'footer.php';
 
 </body>
 </html>
-
