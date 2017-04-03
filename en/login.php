@@ -60,7 +60,6 @@
                                             <div class="form-group last">
                                                 <div class="col-sm-offset-3 col-sm-9">
                                                     <a href="../facebook" type="button" class="btn btn-success btn-md">Facebook</a>
-                                                    <a href="../google" type="button" class="btn btn-danger btn-md">Gmail</a>
                                                 </div>
 
                                             </div>
