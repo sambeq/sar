@@ -75,8 +75,12 @@
 
                 require 'dbconnect.php';
 
+
+
+
+
                 if(!empty($_POST)){
-                    $query = " SELECT Userid, Firstname, Password, Salt, Email 	FROM User WHERE Email = ? ";
+                    $query = " SELECT Userid, Firstname, Username, Password, Salt, Email 	FROM User WHERE Email = ? ";
                     $email=$_POST['email'];
 
                     try{
@@ -106,6 +110,7 @@
                         unset($row['Salt']);
                         unset($row['Password']);
                         $_SESSION['Email'] = $row['Email'];
+                        $_SESSION['Username'] = $row['Username'];
                         $_SESSION['loggedin']=true;
 
 

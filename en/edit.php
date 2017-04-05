@@ -146,7 +146,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-birthday-cake"></i>
                                 </div>
-                                <input id="dob" name="dob" type="text" placeholder="Date Of Birth"
+                                <input id="dob" name="dob" type="date" placeholder="Date Of Birth"
                                        value="<?php echo $result['Birthdate']; ?>"
                                        class="form-control input-md">
                             </div>
@@ -179,9 +179,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-globe" style="font-size: 20px;"></i>
                                 </div>
-                                <input id="state" name="state" type="text" placeholder="State"
-                                       value="<?php echo $result['State']; ?>"
-                                       class="form-control input-md">
+                                <select style="color:black" name="state"id="countries_states1" class="form-control bfh-countries" data-country="<?php echo $result['State']; ?>"></select>
+
                             </div>
                         </div>
                     </div>
@@ -198,6 +197,8 @@
                                 <input id="country" name="country" type="text" placeholder="Country"
                                        value="<?php echo $result['Country']; ?>"
                                        class="form-control input-md">
+                                <select  style="color:black" name="country" class="form-control bfh-states" data-country="countries_states1" value="<?php echo $result['Country']; ?>"></select>
+
                             </div>
                         </div>
                     </div>
@@ -211,9 +212,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-phone"></i>
                                 </div>
-                                <input id="phone" name="phone" type="text" placeholder="Phone"
-                                       value="<?php echo $result['Phone']; ?>"
-                                       class="form-control input-md">
+                                <input style="color:black" name="phone" type="text" class="form-control bfh-phone" data-country="countries_states1" value="<?php echo $result['Phone']; ?>">
+
                             </div>
                         </div>
                     </div>
